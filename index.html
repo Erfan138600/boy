@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روز پسر مبارک</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'IranSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v33.003/dist/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Vazirmatn', 'IranSans', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+        .slide-in-right {
+            animation: slideInRight 1s ease-in-out;
+        }
+        .slide-in-left {
+            animation: slideInLeft 1s ease-in-out;
+        }
+        .bounce-in {
+            animation: bounceIn 1.2s ease-in-out;
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        .glow {
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .img-hover:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+            transition: all 0.3s ease;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6; }
+            to { box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 25px #0073e6, 0 0 30px #0073e6; }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            opacity: 0.7;
+            animation: confetti-fall 5s linear infinite;
+            z-index: 1;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        .ribbon {
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            padding: 5px 10px;
+            background: #007bff;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transform: rotate(3deg);
+            z-index: 1;
+        }
+        .ribbon:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            border-top: 10px solid #0056b3;
+            border-right: 10px solid transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen hero-pattern">
+    <div id="confetti-container"></div>
+    
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-12 px-4 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 bounce-in">روز پسر مبارک</h1>
+            <p class="text-xl md:text-2xl fade-in">🌟 به مناسبت گرامیداشت روز پسر 🌟</p>
+            <div class="mt-6">
+                <span class="inline-block bg-white text-blue-600 rounded-full px-4 py-2 text-lg font-bold shadow-md pulse">
+                    <span id="current-date">۲۷ اردیبهشت</span> | روز جهانی پسر
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 slide-in-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 gradient-text">پسران، آینده‌سازان فردا</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    روز پسر، فرصتی برای قدردانی از تمامی پسران، این سرمایه‌های ارزشمند خانواده و جامعه است. به همین مناسبت این صفحه را با عشق آماده کرده‌ایم تا بتوانید به بهترین شکل این روز را تبریک بگویید.
+                </p>
+                <div class="bg-blue-100 border-r-4 border-blue-500 p-4 rounded mb-6">
+                    <p class="text-blue-700 font-medium">
+                        روز جهانی پسر هر ساله در روز ۲۷ اردیبهشت برگزار می‌شود تا توانمندی‌ها و استعدادهای پسران را جشن بگیریم و برای آینده‌ای روشن‌تر به آنها انگیزه بدهیم.
+                    </p>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center slide-in-right">
+                <div class="relative">
+                    <img src="https://www.24nevis.ir/wp-content/uploads/2025/01/ruz-pesar-5.webp" alt="روز پسر مبارک" class="rounded-lg shadow-xl max-w-full h-auto float" style="max-height: 400px;">
+                    <div class="ribbon">روز پسر مبارک</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Greeting Cards -->
+    <section class="py-12 px-4 bg-gradient-to-b from-white to-blue-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10 gradient-text bounce-in">زیباترین جملات تبریک روز پسر</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 0.2s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4">تبریک به پسرم</h3>
+                        <p class="text-gray-700">
+                            پسرم، آرزوی من برای تو ساده است، بهترین زندگی قابل تصور را داشته باش. جوری زندگی کن که هرگز پیر نخواهی شد، بخند، بخند، گریه کن اگر مجبوری. روز پسر مبارک عزیزترینم!
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-blue-50">
+                        <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 mr-2">#پسرم</span>
+                        <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700">#عشق_پدر</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 0.4s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-4">تبریک از طرف مادر</h3>
+                        <p class="text-gray-700">
+                            عزیزترینم، از صمیم قلبم دوستت دارم و بهترین‌ها را برائت آرزومندم. پسر گلم! تو قلب منی. روز جهانی پسر مبارک زیباترین آفریده خدای بزرگ. از خدایا ممنونم بابت اینکه نعمت به دنیا آوردنت را نصیب من کرد.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-indigo-50">
+                        <span class="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-indigo-700 mr-2">#پسرم</span>
+                        <span class="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-indigo-700">#عشق_مادر</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 0.6s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-purple-600 mb-4">تبریک به برادر</h3>
+                        <p class="text-gray-700">
+                            داداش گلم! روزت مبارک. همیشه با وجودت حس امنیت داشتم، حتی وقتی دنیا سخت بود. تو فقط یه برادر نیستی، یه رفیق واقعی و محکم‌ترین تکیه‌گاهی. روز پسر بر تو که مردانگی و غیرت را معنا کردی، مبارک باد.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-purple-50">
+                        <span class="inline-block bg-purple-200 rounded-full px-3 py-1 text-sm font-semibold text-purple-700 mr-2">#برادر</span>
+                        <span class="inline-block bg-purple-200 rounded-full px-3 py-1 text-sm font-semibold text-purple-700">#رفیق</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 0.8s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">تبریک به دوست</h3>
+                        <p class="text-gray-700">
+                            تبریک ویژه به آقایون گروه به مناسبت روز پسر! انگیزه‌ی شما به همه‌ی ما انرژی می‌ده. امیدوارم همیشه توی زندگی‌تون موفق و خوشحال باشید. رفیق، در این روز خاص بهت میگم که وجودت همیشه مایه دلگرمی بوده.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-green-50">
+                        <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-700 mr-2">#دوست</span>
+                        <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-700">#رفاقت</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 1s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">تبریک عاشقانه</h3>
+                        <p class="text-gray-700">
+                            عاشق ترین عاشق دنیا هستم برای پسری چون تو. روز جهانی پسر مبارک. در بنفشه زار چشم تو من ز بهترین بهشت‌ها گذشته‌ام. من به هر جا رسیده‌ام، فقط از راه چشم تو گذشته‌ام. عشقم، روز پسر مبارک.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-red-50">
+                        <span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2">#عشق</span>
+                        <span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700">#عاشقانه</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in" style="animation-delay: 1.2s">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-yellow-600 mb-4">تبریک رسمی</h3>
+                        <p class="text-gray-700">
+                            روز جهانی پسر بر تمامی جوانان و نوجوانان پرتلاش و آینده‌ساز میهن عزیزمان مبارک باد. امیدواریم در مسیر رشد و تعالی گام‌های استواری بردارید و با اتکا به توانمندی‌های خود، آینده‌ای درخشان بسازید.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-yellow-50">
+                        <span class="inline-block bg-yellow-200 rounded-full px-3 py-1 text-sm font-semibold text-yellow-700 mr-2">#تبریک_رسمی</span>
+                        <span class="inline-block bg-yellow-200 rounded-full px-3 py-1 text-sm font-semibold text-yellow-700">#روز_جهانی_پسر</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="py-12 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10 gradient-text bounce-in">تصاویر زیبا برای روز پسر</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 0.3s">
+                    <img src="https://www.24nevis.ir/wp-content/uploads/2025/01/ruz-pesar-5.webp" alt="تبریک روز پسر" class="w-full h-auto img-hover">
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 0.6s">
+                    <img src="https://takmatn.com/wp-content/uploads/2025/05/%D9%85%D8%AA%D9%86-%D8%AA%D8%A8%D8%B1%DB%8C%DA%A9-%D8%B1%D9%88%D8%B2-%D9%BE%D8%B3%D8%B1.jpg" alt="متن تبریک روز پسر" class="w-full h-auto img-hover">
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 0.9s">
+                    <img src="https://salamdonya.com/assets/images/60/6017gs7js.jpg" alt="تبریک روز پسر" class="w-full h-auto img-hover">
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 1.2s">
+                    <img src="https://static1.borna.news/servev2/uDKvaekgWbWj/KxuoffTghAA,/1603529386_successful-teenager6.jpg" alt="جوان موفق" class="w-full h-auto img-hover">
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 1.5s">
+                    <img src="https://www.soorban.com/images/news/2024/05/1715520826_I4uL5.png" alt="تبریک روز پسر برای پروفایل" class="w-full h-auto img-hover">
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="overflow-hidden rounded-lg shadow-lg fade-in" style="animation-delay: 1.8s">
+                    <img src="https://www.alamto.com/wp-content/uploads/2024/05/%D8%B1%D9%88%D8%B2-%D9%BE%D8%B3%D8%B1-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-7-533x533.jpg" alt="روز پسر مبارک" class="w-full h-auto img-hover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspirational Section -->
+    <section class="py-12 px-4 bg-blue-800 text-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-10 bounce-in">جملات انگیزشی برای پسران</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Quote 1 -->
+                <div class="bg-blue-700 bg-opacity-50 p-6 rounded-lg shadow-lg float">
+                    <i class="fas fa-quote-right text-3xl text-blue-300 mb-4"></i>
+                    <p class="text-lg mb-4">موفقیت از آن کسانی است که هرگز تسلیم نمی‌شوند. پسر عزیز، همیشه به رویاهایت باور داشته باش و برای رسیدن به آنها تلاش کن.</p>
+                    <p class="font-bold">- سخن بزرگان</p>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="bg-blue-700 bg-opacity-50 p-6 rounded-lg shadow-lg float" style="animation-delay: 0.5s">
+                    <i class="fas fa-quote-right text-3xl text-blue-300 mb-4"></i>
+                    <p class="text-lg mb-4">پسران امروز، مردان فردا هستند. با صبر، پشتکار و ایمان به توانایی‌های خود، می‌توانید دنیا را تغییر دهید.</p>
+                    <p class="font-bold">- سخن بزرگان</p>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="bg-blue-700 bg-opacity-50 p-6 rounded-lg shadow-lg float" style="animation-delay: 1s">
+                    <i class="fas fa-quote-right text-3xl text-blue-300 mb-4"></i>
+                    <p class="text-lg mb-4">شجاعت یعنی ترسیدن اما ادامه دادن. پسر عزیز، در مسیر زندگی شجاع باش و به خودت ایمان داشته باش.</p>
+                    <p class="font-bold">- سخن بزرگان</p>
+                </div>
+
+                <!-- Quote 4 -->
+                <div class="bg-blue-700 bg-opacity-50 p-6 rounded-lg shadow-lg float" style="animation-delay: 1.5s">
+                    <i class="fas fa-quote-right text-3xl text-blue-300 mb-4"></i>
+                    <p class="text-lg mb-4">هرگز برای دنبال کردن رویاهایت دیر نیست. با اراده قوی و پشتکار، هر هدفی دست‌یافتنی است.</p>
+                    <p class="font-bold">- سخن بزرگان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 px-4 bg-gradient-to-r from-indigo-500 to-blue-600 text-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6 bounce-in">تبریک خود را به اشتراک بگذارید</h2>
+            <p class="text-xl mb-8">این صفحه را با عزیزانتان به اشتراک بگذارید و روز پسر را به آنها تبریک بگویید</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="bg-white text-blue-600 hover:bg-blue-100 px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <i class="fab fa-telegram ml-2"></i>تلگرام
+                </a>
+                <a href="#" class="bg-white text-purple-600 hover:bg-purple-100 px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <i class="fab fa-instagram ml-2"></i>اینستاگرام
+                </a>
+                <a href="#" class="bg-white text-green-600 hover:bg-green-100 px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <i class="fab fa-whatsapp ml-2"></i>واتساپ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4">
+        <div class="container mx-auto text-center">
+            <h3 class="text-2xl font-bold mb-4">روز پسر مبارک</h3>
+            <p class="mb-4">با آرزوی بهترین‌ها برای تمامی پسران سرزمینمان</p>
+            <p class="text-sm text-gray-400">&copy; ۱۴۰۴ - تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['#007bff', '#6610f2', '#6f42c1', '#e83e8c', '#fd7e14', '#28a745'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Random position
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Random color
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.setProperty('--color', randomColor);
+                
+                // Random size
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                
+                // Random animation duration and delay
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = (Math.random() * 5) + 's';
+                
+                confettiContainer.appendChild(confetti);
+            }
+        }
+        
+        // On page load
+        window.addEventListener('load', function() {
+            createConfetti();
+            
+            // Set Persian date
+            const currentDate = document.getElementById('current-date');
+            // This is a placeholder - in a real scenario you would use a Persian date library
+            // For now we just leave the hardcoded date
+        });
+    </script>
+</body>
+</html>
